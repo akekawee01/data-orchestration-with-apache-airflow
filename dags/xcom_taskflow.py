@@ -27,4 +27,4 @@ with DAG(
 
     end = EmptyOperator(task_id="end")
 
-    start >> push() >> pull() >> end
+    start >> _push() >> _pull() >> end
