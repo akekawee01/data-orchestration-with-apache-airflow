@@ -18,13 +18,18 @@ def _pull(ti):
     print(f"This is a {another_animal}!")
 
 
-with DAG(
+
+@dag(
     dag_id="xcom_taskflow",
     start_date=datetime.datetime(2025, 10, 1),
     schedule=None,
-):
+)
+def xcom_taskflow():
     start = EmptyOperator(task_id="start")
 
     end = EmptyOperator(task_id="end")
 
     start >> _push() >> _pull() >> end
+
+
+xcom_taskflow()
