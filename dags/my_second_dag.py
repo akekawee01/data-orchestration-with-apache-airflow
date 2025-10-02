@@ -3,7 +3,7 @@ from airflow.utils import timezone
 from airflow.providers.standard.operators.empty import EmptyOperator
 
 with DAG(
-    "my_first_dag",
+    "my_second_dag",
     start_date=timezone.datetime(2025,10,2),
     schedule=None,
 ):
