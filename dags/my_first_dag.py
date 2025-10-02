@@ -8,5 +8,7 @@ with DAG(
     schedule=None,
 ):
 
-    t1 = EmpytyOperator(task_id="t1")
-    t2 = EmpytyOperator(task_id="t2")
+    t1 = EmptyOperator(task_id="t1")
+    t2 = EmptyOperator(task_id="t2")
+
+    t2 >> t1
