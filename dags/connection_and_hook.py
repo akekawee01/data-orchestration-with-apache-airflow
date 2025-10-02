@@ -16,6 +16,13 @@ def _list_tables():
     logging.info(tables)
     return tables
 
+def __list_data_customer():
+    hook = PostgresHook(postgres_conn_id="my_postgres_connection")
+    customers = hook.get_records(
+        "SELECT * FROM customers W;"
+    )
+    logging.info(customers)
+    return customers
 
 with DAG(
     dag_id="connection_and_hook",
@@ -29,6 +36,12 @@ with DAG(
         python_callable=_list_tables,
     )
 
+    list_customer = PythonOperator(
+        task_id="list_customer",
+        python_callable=__list_data_customer,
+    )
+
+
     end = EmptyOperator(task_id="end")
 
-    start >> list_tables >> end
+    start >> list_tables >> list_customer >> end
