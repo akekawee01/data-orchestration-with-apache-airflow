@@ -19,7 +19,7 @@ def _pull(ti):
 
 
 with DAG(
-    dag_id="xcom",
+    dag_id="xcom_taskflow",
     start_date=datetime.datetime(2025, 10, 1),
     schedule=None,
 ):
