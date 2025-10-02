@@ -8,9 +8,9 @@ def _hello():
     print("Hello")
 
 with DAG(
-    "everyday",
+    "everyday_sunday",
     start_date=timezone.datetime(2025,10,2),
-    schedule="15 14 * * *",
+    schedule="30 17 1,16 * *",
 ):
 
     hello = PythonOperator(
