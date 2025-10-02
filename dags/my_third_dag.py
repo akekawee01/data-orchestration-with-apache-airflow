@@ -18,7 +18,7 @@ with DAG(
         python_callable=_hello,
     )
 
-    word = BashOperator(
+    world = BashOperator(
         task_id="world",
         bash_command='echo "World!"',
     )
