@@ -1,5 +1,5 @@
-from airflow.sdk import DAG
 from airflow.utils import timezone
+from airflow.decorators import dag, task
 from airflow.providers.standard.operators.empty import EmptyOperator
 import pandas as pd
 
