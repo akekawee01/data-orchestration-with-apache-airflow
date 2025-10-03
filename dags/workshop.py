@@ -17,6 +17,7 @@ def etl():
     customers_df["birthdate"] = customers_df["birthdate"].apply(
         lambda x: datetime.now().year - pd.to_datetime(x, dayfirst=True).year
     )
+    print(customers_df["birthdate"])
     # Save DataFrame to a local Parquet file
     parquet_file = "/tmp/customers.parquet"
     customers_df.to_parquet(parquet_file, index=False)
