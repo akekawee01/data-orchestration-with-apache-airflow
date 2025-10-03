@@ -49,8 +49,8 @@ def etl(ti):
     ti.xcom_push(key="prefix", value="akeeee/2025-10-03/")
     return "hello"
 
-@task(task_id="wait_for_files")
-def wait_for_files():
+@task(task_id="wait_for_customers_file")
+def _wait_for_customers_file():
     s3_bucket = "pea-watt"
     s3_key = "akeeee/2025-10-03/customers.parquet"
     s3_hook = S3Hook(aws_conn_id="my_aws_connection")
@@ -65,7 +65,25 @@ def wait_for_files():
     )
 
     sensor.execute(context={})
-    print(f"File {s3_key} is available in bucket {s3_bucket}.")
+    print(f"File customers of {s3_key} is available in bucket {s3_bucket}.")
+
+@task(task_id="wait_for_orders_file")
+def _wait_for_orders_file():
+    s3_bucket = "pea-watt"
+    s3_key = "akeeee/2025-10-03/orders.parquet"
+    s3_hook = S3Hook(aws_conn_id="my_aws_connection")
+
+    sensor = S3KeySensor(
+        task_id="s3_key_sensor_orders",
+        bucket_name=s3_bucket,
+        bucket_key=s3_key,
+        aws_conn_id="my_aws_connection",
+        poke_interval=30,
+        timeout=600,
+    )
+
+    sensor.execute(context={})
+    print(f"File orders of {s3_key} is available in bucket {s3_bucket}.")
 
 
 @task(task_id="pull")
@@ -99,7 +117,7 @@ def main():
 
     end = EmptyOperator(task_id="end")
 
-    start >> etl() >> wait_for_files() >>_list_files() >> end
+    start >> etl() >> _wait_for_customers_file() >> _wait_for_orders_file() >> _list_files() >> end
 
 
 main()

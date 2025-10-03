@@ -1,0 +1,13 @@
+{"timestamp":"2025-10-03T08:16:15.820918Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-10-03T08:16:15.821650Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/workshop.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-10-03T08:16:16.641391Z","level":"warning","event":"The `airflow.decorators.dag` attribute is deprecated. Please use `'airflow.sdk.dag'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":2,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T08:16:16.641519Z","level":"warning","event":"The `airflow.decorators.task` attribute is deprecated. Please use `'airflow.sdk.task'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":2,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T08:16:16.641612Z","level":"warning","event":"The `airflow.sensors.base.poke_mode_only` attribute is deprecated. Please use `'airflow.sdk.bases.sensor.poke_mode_only'`.","category":"DeprecatedImportWarning","filename":"/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/amazon/aws/sensors/s3.py","lineno":39,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T08:16:16.641684Z","level":"warning","event":"The `airflow.utils.timezone.datetime` attribute is deprecated. Please use `'airflow.sdk.timezone.datetime'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":94,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T08:16:16.675290Z","level":"info","event":"AWS Connection (conn_id='my_aws_connection', conn_type='aws') credentials retrieved from login and password.","logger":"airflow.providers.amazon.aws.utils.connection_wrapper.AwsConnectionWrapper","filename":"connection_wrapper.py","lineno":334}
+{"timestamp":"2025-10-03T08:16:18.092844Z","level":"info","event":"Files under prefix:","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:16:18.093225Z","level":"info","event":"=============","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:16:18.093351Z","level":"info","event":"akeeee/2025-10-03/customers.parquet","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:16:18.093432Z","level":"info","event":"=============","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:16:18.093511Z","level":"info","event":"akeeee/2025-10-03/orders.parquet","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:16:18.092812Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator","filename":"python.py","lineno":218}
