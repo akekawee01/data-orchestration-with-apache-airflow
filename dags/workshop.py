@@ -47,6 +47,7 @@ def etl(ti):
 
 
     ti.xcom_push(key="prefix", value="akeeee/2025-10-03/")
+    return "hello"
 
 @task(task_id="pull")
 def _list_files(ti):

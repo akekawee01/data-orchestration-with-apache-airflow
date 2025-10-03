@@ -1,0 +1,17 @@
+{"timestamp":"2025-10-03T08:08:06.695114Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-10-03T08:08:06.695818Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/workshop.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-10-03T08:08:07.252131Z","level":"warning","event":"The `airflow.decorators.dag` attribute is deprecated. Please use `'airflow.sdk.dag'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":2,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T08:08:07.252259Z","level":"warning","event":"The `airflow.decorators.task` attribute is deprecated. Please use `'airflow.sdk.task'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":2,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T08:08:07.252337Z","level":"warning","event":"The `airflow.utils.timezone.datetime` attribute is deprecated. Please use `'airflow.sdk.timezone.datetime'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":69,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T08:08:08.264117Z","level":"info","event":"0    12-05-1990","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.264296Z","level":"info","event":"1    20-08-1985","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.264416Z","level":"info","event":"2    03-11-1992","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.264511Z","level":"info","event":"Name: birthdate, dtype: object","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.268660Z","level":"info","event":"   order_id  customer_id     product  quantity  order_date","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.268790Z","level":"info","event":"0       101            1      Laptop         1  2025-01-10","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.268893Z","level":"info","event":"1       102            2  Smartphone         2  2025-02-15","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.268984Z","level":"info","event":"2       103            3      Tablet         1  2025-03-20","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.269085Z","level":"info","event":"3       104            1       Mouse         3  2025-04-05","logger":"task.stdout"}
+{"timestamp":"2025-10-03T08:08:08.284920Z","level":"info","event":"AWS Connection (conn_id='my_aws_connection', conn_type='aws') credentials retrieved from login and password.","logger":"airflow.providers.amazon.aws.utils.connection_wrapper.AwsConnectionWrapper","filename":"connection_wrapper.py","lineno":334}
+{"timestamp":"2025-10-03T08:08:10.017037Z","level":"info","event":"AWS Connection (conn_id='my_aws_connection', conn_type='aws') credentials retrieved from login and password.","logger":"airflow.providers.amazon.aws.utils.connection_wrapper.AwsConnectionWrapper","filename":"connection_wrapper.py","lineno":334}
+{"timestamp":"2025-10-03T08:08:11.123826Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator","filename":"python.py","lineno":218}
