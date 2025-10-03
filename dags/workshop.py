@@ -5,6 +5,8 @@ import pandas as pd
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from datetime import datetime
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
+from airflow.providers.amazon.aws.sensors.s3 import S3KeySensor
+
 @task(task_id="push")
 def etl(ti):
     pg_hook = PostgresHook(postgres_conn_id="my_postgres_connection")
@@ -47,11 +49,33 @@ def etl(ti):
     ti.xcom_push(key="prefix", value="akeeee/2025-10-03/")
     return "hello"
 
+@task(task_id="wait_for_files")
+def wait_for_files():
+    s3_bucket = "pea-watt"
+    s3_key = "akeeee/2025-10-03/customers.parquet"
+    s3_hook = S3Hook(aws_conn_id="my_aws_connection")
+
+    sensor = S3KeySensor(
+        task_id="s3_key_sensor",
+        bucket_name=s3_bucket,
+        bucket_key=s3_key,
+        aws_conn_id="my_aws_connection",
+        poke_interval=30,
+        timeout=600,
+    )
+
+    sensor.execute(context={})
+    print(f"File {s3_key} is available in bucket {s3_bucket}.")
+
+
 @task(task_id="pull")
 def _list_files(ti):
     prefix = ti.xcom_pull(task_ids="push", key="prefix")
     s3_bucket = "pea-watt"
     s3_hook = S3Hook(aws_conn_id="my_aws_connection")
+
+
+
     objects = s3_hook.list_keys(
     bucket_name=s3_bucket,
     prefix="akeeee/2025-10-03/"
@@ -75,7 +99,7 @@ def main():
 
     end = EmptyOperator(task_id="end")
 
-    start >> etl() >> _list_files() >> end
+    start >> etl() >> wait_for_files() >>_list_files() >> end
 
 
 main()
