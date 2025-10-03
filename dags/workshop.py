@@ -2,7 +2,7 @@ from airflow.utils import timezone
 from airflow.decorators import dag, task
 from airflow.providers.standard.operators.empty import EmptyOperator
 import pandas as pd
-
+from airflow.providers.postgres.hooks.postgres import PostgresHook
 @task
 def etl():
     pg_hook = PostgresHook(postgres_conn_id="my_postgres_connection")
