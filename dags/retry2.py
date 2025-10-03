@@ -15,7 +15,7 @@ with DAG(
 ):
     BashOperator(
     task_id="example_task", 
-    bash_command="echo I get 5 retries! && False"
+    bash_command="echo I get 5 retries! && False",
     retries=5,
     retry_delay=timedelta(seconds=5)
     )
