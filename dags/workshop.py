@@ -21,7 +21,7 @@ def etl():
     dag_id="workshop",
     start_date=timezone.datetime(2025,10,2),
     schedule=None,
-):
+)
 def main():
     start = EmptyOperator(task_id="start")
 
