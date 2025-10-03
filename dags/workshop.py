@@ -10,7 +10,7 @@ def etl():
     customers_df = pg_hook.get_df("SELECT * FROM customers;")
     print(customers_df)
 
-    customers_df = pd.read_csv(...)
+    customers_df = pd.read_csv(customers_df)
     # Format the datetime from "12 May 1990" to "1990-05-12"
     df["birthdate"] = pd.to_datetime(df["birthdate"], dayfirst=True)
     print(df["birthdate"])
