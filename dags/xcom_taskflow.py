@@ -2,7 +2,7 @@
 import datetime
 
 from airflow.providers.standard.operators.empty import EmptyOperator
-from airflow.sdk import DAG, task
+from airflow.decorators import dag, task
 
 @task(task_id="push")
 def _push(ti):

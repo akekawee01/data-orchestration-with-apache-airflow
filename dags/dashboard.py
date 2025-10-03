@@ -8,6 +8,12 @@ with DAG(
     start_date=timezone.datetime(2025,10,2),
     schedule="15 14 * * *",
 ):
+    
+    start = BashOperator(
+        task_id="start",
+        bash_command='echo start dag',
+    )
+
 
     api = BashOperator(
         task_id="api",
@@ -39,6 +45,10 @@ with DAG(
         bash_command='echo "generate report!"',
     )
 
+    end = BashOperator(
+        task_id="end",
+        bash_command='echo end dag',
+    )   
     
-    [api >> database >> marketplace] >> tranform_clean >> load_wh >> generate_report
+    start >> [api, database, marketplace] >> tranform_clean >> load_wh >> generate_report >> end
     
