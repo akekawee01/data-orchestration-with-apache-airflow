@@ -14,7 +14,7 @@ def show_date(date):
 with DAG(
     dag_id="templating",
     start_date=datetime.datetime(2025, 10, 1),
-    schedule=None,
+    schedule="@daily",
 ):
     task_1 = BashOperator(
         task_id="task_1",

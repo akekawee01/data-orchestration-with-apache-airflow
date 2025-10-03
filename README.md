@@ -25,3 +25,5 @@ To stop everything, remove containers, delete volumes with database data, and cl
 ```sh
 docker compose down --volumes --rmi all
 ```
+
+docker compose --profile debug run airflow-cli backfill create --dag-id templating --from-date 2025-08-08 --to-date 2025-08-14
