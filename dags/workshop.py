@@ -17,9 +17,17 @@ def etl():
 
 
 
-with DAG(
-    "workshop",
+@dag(
+    dag_id="workshop",
     start_date=timezone.datetime(2025,10,2),
     schedule=None,
 ):
-    # Idea
+def main():
+    start = EmptyOperator(task_id="start")
+
+    end = EmptyOperator(task_id="end")
+
+    start >> etl() >> end
+
+
+main()
