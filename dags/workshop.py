@@ -5,7 +5,7 @@ import pandas as pd
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from datetime import datetime
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
-@task
+@task(task_id="push")
 def etl():
     pg_hook = PostgresHook(postgres_conn_id="my_postgres_connection")
 
@@ -20,9 +20,11 @@ def etl():
     # Save DataFrame to a local Parquet file
     parquet_file = "/tmp/customers.parquet"
     customers_df.to_parquet(parquet_file, index=False)
+
     order_parquet_file = "/tmp/orders.parquet"
     orders_df.to_parquet(order_parquet_file, index=False)
     # Upload Parquet file to S3 using S3Hook
+
     s3_hook = S3Hook(aws_conn_id="my_aws_connection")
     s3_bucket = "pea-watt"
     s3_key = "akeeee/2025-10-03/customers.parquet"
@@ -44,7 +46,11 @@ def etl():
     )
 
 
+    ti.xcom_push(key="prefix", value="akeeee/2025-10-03/")
 
+@task(task_id="pull")
+def _pull(ti):
+    prefix = ti.xcom_pull(task_ids="push", key="prefix")
     objects = s3_hook.list_keys(
     bucket_name=s3_bucket,
     prefix="akeeee/2025-10-03/"
@@ -52,7 +58,9 @@ def etl():
 
     print("Files under prefix:")
     for obj in objects:
+        print("=============")
         print(obj)
+
 
 
 
