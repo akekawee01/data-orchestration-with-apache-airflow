@@ -18,13 +18,13 @@ def etl():
         lambda x: datetime.now().year - pd.to_datetime(x, dayfirst=True).year
     )
     # Save DataFrame to a local Parquet file
-    parquet_file = "/customers.parquet"
+    parquet_file = "/tmp/customers.parquet"
     customers_df.to_parquet(parquet_file, index=False)
 
     # Upload Parquet file to S3 using S3Hook
     s3_hook = S3Hook(aws_conn_id="my_aws_connection")
     s3_bucket = "pea-watt"
-    s3_key = "akeeee/2025-10-03"
+    s3_key = "akeeee/2025-10-03/customers.parquet"
     s3_hook.load_file(
         filename=parquet_file,
         key=s3_key,
