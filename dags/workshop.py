@@ -33,6 +33,16 @@ def etl():
     )
 
 
+    objects = s3_hook.list_keys(
+    bucket_name=s3_bucket,
+    prefix="akeeee/2025-10-03/"
+    )
+
+    print("Files under prefix:")
+    for obj in objects:
+        print(obj)
+
+
 
 @dag(
     dag_id="workshop",
