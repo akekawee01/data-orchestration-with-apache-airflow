@@ -49,7 +49,7 @@ def etl(ti):
     ti.xcom_push(key="prefix", value="akeeee/2025-10-03/")
 
 @task(task_id="pull")
-def _pull(ti):
+def _list_files(ti):
     prefix = ti.xcom_pull(task_ids="push", key="prefix")
     objects = s3_hook.list_keys(
     bucket_name=s3_bucket,
@@ -74,7 +74,7 @@ def main():
 
     end = EmptyOperator(task_id="end")
 
-    start >> etl() >> end
+    start >> etl() >> _list_files() >> end
 
 
 main()
