@@ -6,11 +6,15 @@ from airflow.sdk import DAG
 
 default_args = {
     "retries": 3,
-    "retry_delay": timedelta(seconds=5),
+    "retry_delay": timedelta(seconds=30),
 }
 with DAG(
     "retry",
     start_date=datetime(2025, 10, 1),
     default_args=default_args,
+    retries=5,
+    retry_delay=timedelta(seconds=5),
 ):
     task_1 = BashOperator(task_id="task_1", bash_command="echo I get 3 retries! && False")
+    
+

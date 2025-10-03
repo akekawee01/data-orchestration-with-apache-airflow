@@ -1,0 +1,5 @@
+{"timestamp":"2025-10-03T06:58:57.336018Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-10-03T06:58:58.547228Z","level":"warning","event":"Process exited abnormally","exit_code":1,"logger":"task"}
+{"timestamp":"2025-10-03T06:58:57.336552Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/my_third_dag.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-10-03T06:58:57.346875Z","level":"warning","event":"The `airflow.utils.timezone.datetime` attribute is deprecated. Please use `'airflow.sdk.timezone.datetime'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/my_third_dag.py","lineno":12,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T06:58:57.347229Z","level":"error","event":"Dag not found during start up","dag_id":"retry","bundle":"BundleInfo(name='dags-folder', version=None)","path":"my_third_dag.py","logger":"task","filename":"task_runner.py","lineno":633}
