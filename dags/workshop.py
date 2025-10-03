@@ -52,6 +52,7 @@ def etl(ti):
 @task(task_id="pull")
 def _list_files(ti):
     prefix = ti.xcom_pull(task_ids="push", key="prefix")
+    s3_hook = S3Hook(aws_conn_id="my_aws_connection")
     objects = s3_hook.list_keys(
     bucket_name=s3_bucket,
     prefix="akeeee/2025-10-03/"
