@@ -6,7 +6,7 @@ from airflow.providers.postgres.hooks.postgres import PostgresHook
 from datetime import datetime
 from airflow.providers.amazon.aws.hooks.s3 import S3Hook
 @task(task_id="push")
-def etl():
+def etl(ti):
     pg_hook = PostgresHook(postgres_conn_id="my_postgres_connection")
 
     customers_df = pg_hook.get_df("SELECT * FROM customers;")
