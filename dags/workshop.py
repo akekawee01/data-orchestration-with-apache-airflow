@@ -13,10 +13,7 @@ def etl():
 
     # If you want to add a new column to the DataFrame with some result, for example, let's add a column "age"
 
-    # Calculate age from birthdate
-    customers_df["birthdate"] = customers_df["birthdate"].apply(
-        lambda x: datetime.now().year - pd.to_datetime(x, dayfirst=True).year
-    )
+    customers_df["birthdate"] = pd.to_datetime(customers_df["birthdate"]).dt.strftime("%d-%m-%Y")
     print(customers_df["birthdate"])
     # Save DataFrame to a local Parquet file
     parquet_file = "/tmp/customers.parquet"

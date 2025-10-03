@@ -1,0 +1,13 @@
+{"timestamp":"2025-10-03T07:59:47.578281Z","level":"info","event":"DAG bundles loaded: dags-folder","logger":"airflow.dag_processing.bundles.manager.DagBundlesManager","filename":"manager.py","lineno":179}
+{"timestamp":"2025-10-03T07:59:47.578966Z","level":"info","event":"Filling up the DagBag from /opt/airflow/dags/workshop.py","logger":"airflow.models.dagbag.DagBag","filename":"dagbag.py","lineno":593}
+{"timestamp":"2025-10-03T07:59:48.142847Z","level":"warning","event":"The `airflow.decorators.dag` attribute is deprecated. Please use `'airflow.sdk.dag'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":2,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T07:59:48.142999Z","level":"warning","event":"The `airflow.decorators.task` attribute is deprecated. Please use `'airflow.sdk.task'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":2,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T07:59:48.143112Z","level":"warning","event":"The `airflow.utils.timezone.datetime` attribute is deprecated. Please use `'airflow.sdk.timezone.datetime'`.","category":"DeprecatedImportWarning","filename":"/opt/airflow/dags/workshop.py","lineno":50,"logger":"py.warnings"}
+{"timestamp":"2025-10-03T07:59:48.661012Z","level":"info","event":"0    35","logger":"task.stdout"}
+{"timestamp":"2025-10-03T07:59:48.661181Z","level":"info","event":"1    40","logger":"task.stdout"}
+{"timestamp":"2025-10-03T07:59:48.661284Z","level":"info","event":"2    33","logger":"task.stdout"}
+{"timestamp":"2025-10-03T07:59:48.661383Z","level":"info","event":"Name: birthdate, dtype: int64","logger":"task.stdout"}
+{"timestamp":"2025-10-03T07:59:48.676538Z","level":"info","event":"AWS Connection (conn_id='my_aws_connection', conn_type='aws') credentials retrieved from login and password.","logger":"airflow.providers.amazon.aws.utils.connection_wrapper.AwsConnectionWrapper","filename":"connection_wrapper.py","lineno":334}
+{"timestamp":"2025-10-03T07:59:50.629075Z","level":"info","event":"Files under prefix:","logger":"task.stdout"}
+{"timestamp":"2025-10-03T07:59:50.629254Z","level":"info","event":"akeeee/2025-10-03/customers.parquet","logger":"task.stdout"}
+{"timestamp":"2025-10-03T07:59:50.630479Z","level":"info","event":"Done. Returned value was: None","logger":"airflow.task.operators.airflow.providers.standard.decorators.python._PythonDecoratedOperator","filename":"python.py","lineno":218}
